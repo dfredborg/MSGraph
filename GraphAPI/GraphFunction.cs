@@ -29,13 +29,13 @@ namespace GraphAPI
             string grant_type = "authorization_code";
 
 
-            string url = @"https://login.microsoftonline.com/41fe572f-d61a-4d7a-90df-003afcdaa2c9/oauth2/v2.0/token";
+            string url = @"https://login.microsoftonline.com/{teant}/oauth2/v2.0/token";
 
             HttpClient client = new HttpClient();
             
 
             CloudStorageAccount storageAccount =
-              CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=msgraphtest2;AccountKey=31GZVOmuKw4HqvPodSNSMGXZOo7KaPYWa4KV+oppm5wOWp2/pb7EIzd5zFaKTT/ygIUevVop/lonUx3p+N5XMg==;EndpointSuffix=core.windows.net");
+              CloudStorageAccount.Parse("XXXX");
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
             CloudTable table = tableClient.GetTableReference("appUsers");
@@ -59,7 +59,7 @@ namespace GraphAPI
                    { "client_id", "a02f6ab7-1acd-4bfc-97d5-992acc1301b1" },
                    { "scope", "https://graph.microsoft.com/User.Read offline_access" },
                    { "redirect_uri", "https://graphsharepoint.azurewebsites.net/api/GetToken" },
-                   { "client_secret", "0rnPpWy6q4H//oFqVOf3u73vC9vUeZ7oOrYEvFy+nro=" },
+                   { "client_secret", "XXX" },
                    { "code",code}
                 };
 
@@ -111,7 +111,7 @@ namespace GraphAPI
             string url = data.url;
 
             CloudStorageAccount storageAccount =
-              CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=msgraphtest2;AccountKey=31GZVOmuKw4HqvPodSNSMGXZOo7KaPYWa4KV+oppm5wOWp2/pb7EIzd5zFaKTT/ygIUevVop/lonUx3p+N5XMg==;EndpointSuffix=core.windows.net");
+              CloudStorageAccount.Parse("XXX");
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
             CloudTable table = tableClient.GetTableReference("appUsers");
@@ -136,10 +136,10 @@ namespace GraphAPI
         {
             dynamic data = await req.Content.ReadAsAsync<object>();
             string username = data.username;
-            string url = "https://login.microsoftonline.com/41fe572f-d61a-4d7a-90df-003afcdaa2c9/oauth2/v2.0/token";
+            string url = "https://login.microsoftonline.com/{teant}/oauth2/v2.0/token";
 
             CloudStorageAccount storageAccount =
-              CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=msgraphtest2;AccountKey=31GZVOmuKw4HqvPodSNSMGXZOo7KaPYWa4KV+oppm5wOWp2/pb7EIzd5zFaKTT/ygIUevVop/lonUx3p+N5XMg==;EndpointSuffix=core.windows.net");
+              CloudStorageAccount.Parse("XXX");
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
             CloudTable table = tableClient.GetTableReference("appUsers");
@@ -154,7 +154,7 @@ namespace GraphAPI
                    { "client_id", "a02f6ab7-1acd-4bfc-97d5-992acc1301b1" },
                    { "scope", "https://graph.microsoft.com/User.Read offline_access" },
                    { "redirect_uri", "https://graphsharepoint.azurewebsites.net/api/GetToken" },
-                   { "client_secret", "0rnPpWy6q4H//oFqVOf3u73vC9vUeZ7oOrYEvFy+nro=" },
+                   { "client_secret", "XXX" },
                    { "refresh_token",((User)retrievedResult.Result).refreshToken}
                 };
 
